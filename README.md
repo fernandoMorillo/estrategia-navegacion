@@ -1,32 +1,30 @@
-# React + TypeScript + Vite
+# 🚚 Prototipo: Optimización de Rutas Logísticas Urbanas
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+**Actividad 6: Navegando mareas - Estrategias de navegación en la arquitectura de software**
 
-Currently, two official plugins are available:
+Este repositorio contiene el código fuente del prototipo funcional desarrollado para evaluar y optimizar estrategias de navegación en sistemas logísticos. El aplicativo simula un entorno de toma de decisiones donde el usuario puede alternar dinámicamente entre diferentes algoritmos de cálculo de rutas para entornos urbanos complejos, demostrando la aplicación práctica de patrones de diseño arquitectónico.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🏗️ Arquitectura y Patrones de Diseño
 
-## React Compiler
+El núcleo lógico del sistema está construido implementando el **Patrón de Diseño Strategy** (Patrón de Comportamiento). Esta decisión arquitectónica permite:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+*   **Desacoplamiento:** Separar completamente la interfaz gráfica (React) del motor de reglas de enrutamiento.
+*   **Intercambiabilidad Dinámica:** Cambiar el algoritmo de ruteo en tiempo de ejecución (Run-time) mediante el contexto `RouteNavigator`, soportando las siguientes estrategias:
+    *   `FastestRouteStrategy`: Prioriza vías principales (menor tiempo estimado).
+    *   `ShortestRouteStrategy`: Prioriza la menor distancia física en kilómetros.
+    *   `EconomicRouteStrategy`: Minimiza costos operativos evitando zonas de alta congestión.
+*   **Escalabilidad:** Cumplir con el Principio Abierto/Cerrado (SOLID), garantizando que se puedan añadir nuevas estrategias en el futuro sin alterar el código existente.
 
-## Expanding the Oxlint configuration
+## 🛠️ Tecnologías Utilizadas
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+*   **Librería UI:** React
+*   **Lenguaje:** TypeScript (Asegura el cumplimiento de los contratos/interfaces del patrón Strategy)
+*   **Empaquetador:** Vite (Optimizado con SWC/Oxc para compilación rápida)
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
+## 🚀 Instalación y Ejecución Local
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Sigue estos pasos para desplegar el simulador en un entorno de desarrollo local:
+
+1. **Clonar el repositorio:**
+   ```bash
+   git clone <https://github.com/fernandoMorillo/estrategia-navegacion>
